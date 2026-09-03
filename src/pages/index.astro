@@ -133,9 +133,11 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
 
   <section class="section publication-section">
     <div class="container">
-      <SectionHeading eyebrow="Publication" title="Current scholarly output" />
+      <div class="publication-heading">
+        <p class="eyebrow">Publication</p>
+        <a href={withBase('publications/')}>View all publications →</a>
+      </div>
       <PublicationItem title="Laser Desorption Mass Spectrometry for Mineral Identification" authors="M.C. Raith, R. Saravanan, and R. Arevalo Jr." status="Submitted for review" />
-      <a class="rule-link" href={withBase('publications/')}>Publication details →</a>
     </div>
   </section>
 
@@ -206,7 +208,9 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
   .theme-grid a { display: inline-block; margin-top: 1rem; font-weight: 700; }
   .policy-row { display: grid; padding-block: var(--space-lg); gap: 1rem var(--space-lg); grid-template-columns: 4rem minmax(0, 0.9fr) minmax(0, 0.8fr); border-top: 1px solid var(--line); }
   .project-number, .project-meta { color: var(--accent); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
-  .publication-section :global(.rule-link) { margin-top: 1.5rem; }
+  .publication-heading { display: flex; margin-bottom: 1rem; align-items: center; justify-content: space-between; gap: 1rem; }
+  .publication-heading .eyebrow { margin: 0; }
+  .publication-heading a { font-size: 0.88rem; font-weight: 700; }
   .outreach-grid { display: grid; gap: var(--space-lg); grid-template-columns: 1fr 1fr; }
   .outreach-grid h2 { max-width: 12ch; }
   .outreach-grid ul { margin-block: 2rem; padding: 0; list-style: none; }

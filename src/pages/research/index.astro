@@ -8,12 +8,9 @@ const projects = (await getCollection('research')).sort((a, b) => a.data.order -
 
 <BaseLayout title="Research | Roshini Saravanan" description="Research across paleomagnetism, mineral identification, astrobiology, and computational planetary science.">
   <header class="page-intro container">
-    <p class="eyebrow">Research</p>
-    <h1>What can planetary materials remember?</h1>
-    <p class="lead">I study the physical and chemical records preserved in rocks, minerals, and scientific datasets. Those records connect planetary materials to past environments—and to broader questions about planetary evolution and habitability.</p>
-    <div class="research-chain" aria-label="Research framework">
-      <span>Planetary materials</span><b aria-hidden="true">→</b><span>Preserved records</span><b aria-hidden="true">→</b><span>Planetary environments</span><b aria-hidden="true">→</b><span>Habitability</span>
-    </div>
+    <p class="eyebrow">Planetary materials & environments</p>
+    <h1>Research</h1>
+    <p class="lead">I study the physical and chemical records preserved in rocks, minerals, and scientific datasets to better understand planetary evolution and habitability.</p>
   </header>
 
   <section class="section">
@@ -37,9 +34,6 @@ const projects = (await getCollection('research')).sort((a, b) => a.data.order -
 </BaseLayout>
 
 <style>
-  .research-chain { display: flex; margin-top: var(--space-lg); flex-wrap: wrap; align-items: center; gap: 0.75rem; }
-  .research-chain span { padding: 0.55rem 0.75rem; color: var(--accent); font-size: 0.86rem; font-weight: 750; border: 1px solid var(--accent); }
-  .research-chain b { color: var(--ink-soft); font-weight: 400; }
   .methods { background: var(--paper-deep); }
   .methods-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.8fr 1.2fr; }
   .methods-grid h2 { max-width: 12ch; }
@@ -47,5 +41,5 @@ const projects = (await getCollection('research')).sort((a, b) => a.data.order -
   dl div { padding-block: 1.25rem; border-top: 1px solid var(--line); }
   dt { margin-bottom: 0.35rem; color: var(--accent); font-weight: 750; }
   dd { margin: 0; color: var(--ink-soft); }
-  @media (max-width: 750px) { .methods-grid { grid-template-columns: 1fr; } .research-chain b { transform: rotate(90deg); } }
+  @media (max-width: 750px) { .methods-grid { grid-template-columns: 1fr; } }
 </style>

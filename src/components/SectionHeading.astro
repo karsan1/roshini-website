@@ -14,9 +14,7 @@ const { eyebrow, title, intro } = Astro.props;
 </header>
 
 <style>
-  .section-heading { display: grid; margin-bottom: var(--space-lg); grid-template-columns: minmax(9rem, 0.3fr) minmax(0, 0.7fr); column-gap: var(--space-lg); }
-  .section-heading .eyebrow { padding-top: 0.45rem; }
-  .section-heading h2 { max-width: 14ch; margin-bottom: 0; }
-  .section-heading .lead { grid-column: 2; margin-top: var(--space-md); }
-  @media (max-width: 650px) { .section-heading { grid-template-columns: 1fr; } .section-heading .lead { grid-column: auto; } }
+  .section-heading { max-width: 55rem; margin-bottom: var(--space-lg); }
+  .section-heading h2 { max-width: 16ch; margin-bottom: 0; }
+  .section-heading .lead { margin-top: var(--space-md); }
 </style>
