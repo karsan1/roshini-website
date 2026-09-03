@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="CV | Roshini Saravanan" description="Academic background, research experience, teaching, leadership, and skills for Roshini Saravanan.">
+  <header class="page-intro container">
+    <p class="eyebrow">Curriculum vitae</p>
+    <h1>Research and academic record</h1>
+    <p class="lead">A concise web summary is included below. A downloadable PDF will be added when the current CV file is supplied.</p>
+    <p class="updated">Web record updated: September 2026</p>
+  </header>
+
+  <section class="section cv-section">
+    <div class="container cv-grid">
+      <h2>Education</h2>
+      <div class="entries">
+        <article><span>2025–Present</span><div><h3>M.S. Planetary Science</h3><p>Purdue University</p></div></article>
+        <article><span>2021–2024</span><div><h3>B.S. Computer & Information Science</h3><p>Minor in Planetary Science · University of Maryland, College Park</p><p>College Park Scholars — Science, Discovery & the Universe</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cv-section">
+    <div class="container cv-grid">
+      <h2>Research</h2>
+      <div class="entries">
+        <article><span>2025–Present</span><div><h3>Graduate Research Assistant</h3><p>Purdue Paleomagnetism Lab · Advisor: Dr. Cauê Borlina</p></div></article>
+        <article><span>2024–2026</span><div><h3>Undergraduate Researcher</h3><p>M-Class Lab · Advisors: Dr. Ricardo Arevalo and Madeline Raith</p></div></article>
+        <article><span>2024</span><div><h3>Research / Shadowing Experience</h3><p>UMD Geology & Astrobiology Wet Lab · Mentor: Ashley M. Hanna</p></div></article>
+        <article><span>2023</span><div><h3>Planetary Informatics & Biosignature Fellow</h3><p>Carnegie Institution for Science · Advisors: Dr. Mike Wong and Dr. Anirudh Prabhu</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cv-section">
+    <div class="container cv-grid">
+      <h2>Teaching & policy</h2>
+      <div class="entries">
+        <article><span>2026–Present</span><div><h3>Graduate Teaching Assistant</h3><p>EAPS112 — Earth through Time · Purdue University</p></div></article>
+        <article><span>2026–Present</span><div><h3>Science Policy Intern</h3><p>Office of Senator Kannan Srinivasan · Senate of Virginia</p></div></article>
+        <article><span>2022</span><div><h3>Undergraduate Teaching Assistant</h3><p>ENGL101 — Academic Writing · University of Maryland</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section skills">
+    <div class="container cv-grid">
+      <h2>Methods & skills</h2>
+      <div class="skill-groups">
+        <div><h3>Magnetic & geological methods</h3><p>Thermal demagnetization · Paleointensity · MPMS · FORCs · VSM · Kappabridge · SQUID · Petrography</p></div>
+        <div><h3>Computational</h3><p>Python · MATLAB · R · GIS / QGIS · SQL · JavaScript</p></div>
+        <div><h3>Data & modeling</h3><p>Pandas · NumPy · Machine learning · Network analysis · Scientific visualization</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cv-section awards">
+    <div class="container cv-grid">
+      <h2>Awards & recognition</h2>
+      <ul>
+        <li>UMD Dean’s List</li>
+        <li>Remitly Hackathon Award</li>
+        <li>Ferguson Scholarship</li>
+        <li>Presidential Merit Scholarship</li>
+        <li>College Park Scholars</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .updated { color: var(--accent); font-size: 0.84rem; font-weight: 750; }
+  .cv-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.32fr 0.68fr; }
+  .cv-grid > h2 { font-size: var(--step-2); }
+  .entries article { display: grid; padding-block: 1.2rem; gap: 1rem; grid-template-columns: 8rem 1fr; border-top: 1px solid var(--line); }
+  .entries article > span { color: var(--accent); font-size: 0.8rem; font-weight: 750; }
+  .entries h3, .skill-groups h3 { margin-bottom: 0.35rem; font-size: 1.25rem; }
+  .entries p, .skill-groups p { margin-bottom: 0.25rem; color: var(--ink-soft); font-size: 0.93rem; }
+  .skills { background: var(--paper-deep); }
+  .skill-groups > div { padding-block: 1.2rem; border-top: 1px solid var(--line); }
+  .awards ul { display: grid; margin: 0; padding: 0; grid-template-columns: 1fr 1fr; list-style: none; }
+  .awards li { padding: 1rem 0; border-top: 1px solid var(--line); }
+  @media (max-width: 700px) { .cv-grid, .entries article { grid-template-columns: 1fr; } .entries article { gap: 0.25rem; } }
+  @media (max-width: 500px) { .awards ul { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page not found | Roshini Saravanan" description="The requested page could not be found.">
+  <section class="not-found container">
+    <p class="eyebrow">404 · No signal</p>
+    <h1>This record could not be located.</h1>
+    <p class="lead">The page may have moved, or the address may be incomplete.</p>
+    <div class="button-row">
+      <a class="button" href="/">Return home</a>
+      <a class="button button--secondary" href="/research/">Browse research</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found { display: grid; min-height: 65vh; padding-block: var(--space-xl); align-content: center; }
+  h1 { max-width: 13ch; }
+  .button-row { margin-top: 1.5rem; }
+</style>

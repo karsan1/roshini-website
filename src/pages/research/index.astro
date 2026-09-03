@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+
+const projects = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Research | Roshini Saravanan" description="Research across paleomagnetism, mineral identification, astrobiology, and computational planetary science.">
+  <header class="page-intro container">
+    <p class="eyebrow">Research</p>
+    <h1>What can planetary materials remember?</h1>
+    <p class="lead">I study the physical and chemical records preserved in rocks, minerals, and scientific datasets. Those records connect planetary materials to past environments—and to broader questions about planetary evolution and habitability.</p>
+    <div class="research-chain" aria-label="Research framework">
+      <span>Planetary materials</span><b aria-hidden="true">→</b><span>Preserved records</span><b aria-hidden="true">→</b><span>Planetary environments</span><b aria-hidden="true">→</b><span>Habitability</span>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      {projects.map((project, index) => (
+        <ProjectCard id={project.id} title={project.data.title} institution={project.data.institution} period={project.data.period} summary={project.data.summary} methods={project.data.methods} figure={project.data.figure} index={index + 1} />
+      ))}
+    </div>
+  </section>
+
+  <section class="section methods">
+    <div class="container methods-grid">
+      <div><p class="eyebrow">Methods in context</p><h2>Tools follow the scientific question.</h2></div>
+      <dl>
+        <div><dt>Magnetic & geological</dt><dd>Thermal demagnetization · Paleointensity · MPMS · FORCs · Petrography · QGIS</dd></div>
+        <div><dt>Computational</dt><dd>Python · R · Machine learning · Network analysis · Scientific visualization</dd></div>
+        <div><dt>Laboratory</dt><dd>LDMS data analysis · Culture preparation · Inoculation · Growth monitoring</dd></div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .research-chain { display: flex; margin-top: var(--space-lg); flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+  .research-chain span { padding: 0.55rem 0.75rem; color: var(--accent); font-size: 0.86rem; font-weight: 750; border: 1px solid var(--accent); }
+  .research-chain b { color: var(--ink-soft); font-weight: 400; }
+  .methods { background: var(--paper-deep); }
+  .methods-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.8fr 1.2fr; }
+  .methods-grid h2 { max-width: 12ch; }
+  dl { margin: 0; }
+  dl div { padding-block: 1.25rem; border-top: 1px solid var(--line); }
+  dt { margin-bottom: 0.35rem; color: var(--accent); font-weight: 750; }
+  dd { margin: 0; color: var(--ink-soft); }
+  @media (max-width: 750px) { .methods-grid { grid-template-columns: 1fr; } .research-chain b { transform: rotate(90deg); } }
+</style>

@@ -1,0 +1,29 @@
+:root {
+  --paper: #f4f1ea;
+  --paper-deep: #e8e2d7;
+  --ink: #191d20;
+  --ink-soft: #4f585d;
+  --line: #c9c3b8;
+  --accent: #123d56;
+  --accent-strong: #0b2f45;
+  --accent-pale: #dce7ec;
+  --white: #fffdf8;
+
+  --font-display: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  --font-body: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --step--1: clamp(0.875rem, 0.84rem + 0.1vw, 0.94rem);
+  --step-0: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.05rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.55rem, 1.25rem + 1vw, 2.2rem);
+  --step-3: clamp(2.1rem, 1.55rem + 1.8vw, 3.2rem);
+  --step-4: clamp(3rem, 2rem + 3.2vw, 5.6rem);
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.5rem;
+  --space-lg: clamp(2rem, 4vw, 4rem);
+  --space-xl: clamp(4rem, 8vw, 7.5rem);
+  --container: 76rem;
+  --reading: 46rem;
+}

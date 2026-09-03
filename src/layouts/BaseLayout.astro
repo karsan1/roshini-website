@@ -1,0 +1,56 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url;
+const socialImage = Astro.site ? new URL('/images/og/roshini-saravanan.jpg', Astro.site) : '/images/og/roshini-saravanan.jpg';
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Roshini Saravanan',
+  url: 'https://roshinisaravanan.github.io',
+  email: 'mailto:roshinis.career@gmail.com',
+  jobTitle: 'Graduate Research Assistant in Planetary Science',
+  affiliation: { '@type': 'CollegeOrUniversity', name: 'Purdue University' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'University of Maryland, College Park' },
+  sameAs: ['https://github.com/roshinisaravanan', 'https://www.linkedin.com/in/roshini-saravanan'],
+  knowsAbout: ['Planetary science', 'Paleomagnetism', 'Rock magnetism', 'Astrobiology', 'Scientific machine learning'],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f4f1ea" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <Header />
+    <main id="main-content"><slot /></main>
+    <Footer />
+  </body>
+</html>

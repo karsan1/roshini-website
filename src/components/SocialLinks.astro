@@ -1,0 +1,35 @@
+---
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const links = [
+  { label: 'Email', href: 'mailto:roshinis.career@gmail.com', icon: 'email' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/roshini-saravanan', icon: 'linkedin' },
+  { label: 'GitHub', href: 'https://github.com/roshinisaravanan', icon: 'github' },
+];
+---
+
+<nav class:list={["social-links", { compact }]} aria-label="Professional links">
+  {links.map((link) => (
+    <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'me noopener' : undefined}>
+      <span class="social-icon" aria-hidden="true">
+        {link.icon === 'email' && <svg viewBox="0 0 24 24"><path d="M3.5 6.5h17v11h-17zM4 7l8 6 8-6" /></svg>}
+        {link.icon === 'linkedin' && <svg viewBox="0 0 24 24"><path d="M5 9v10M5 5.5v.1M10 19v-6c0-2.2 1.2-4 3.7-4 2.8 0 4.3 1.8 4.3 5v5M10 13c.4-2.4 1.9-4 4-4" /></svg>}
+        {link.icon === 'github' && <svg viewBox="0 0 24 24"><path d="M8.5 19c-4 1.2-4-2-5.5-2.5M14.5 21v-3.1c0-.9.3-1.6.8-2-3 .3-6.1-1.5-6.1-6.5 0-1.5.5-2.7 1.4-3.6-.1-.4-.6-1.8.2-3.6 0 0 1.1-.4 3.7 1.4a12.8 12.8 0 0 1 6.7 0c2.6-1.8 3.7-1.4 3.7-1.4.8 1.8.3 3.2.2 3.6.9 1 1.4 2.2 1.4 3.6 0 5-3.1 6.8-6.1 6.5.5.4.8 1.2.8 2.3V21" transform="translate(-3)" /></svg>}
+      </span>
+      <span>{link.label}</span>
+    </a>
+  ))}
+</nav>
+
+<style>
+  .social-links { display: flex; flex-wrap: wrap; gap: 0.65rem 1.1rem; }
+  .social-links a { display: inline-flex; min-height: 44px; align-items: center; gap: 0.45rem; font-weight: 650; text-decoration: none; }
+  .social-icon { width: 1.15rem; }
+  svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.75; }
+  .compact span:last-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .compact a { width: 44px; justify-content: center; }
+</style>

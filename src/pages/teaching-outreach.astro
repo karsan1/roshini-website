@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Teaching & Outreach | Roshini Saravanan" description="University teaching, graduate mentorship, and STEM outreach by Roshini Saravanan.">
+  <header class="page-intro container">
+    <p class="eyebrow">Teaching & Outreach</p>
+    <h1>Science becomes stronger when more people can take part.</h1>
+    <p class="lead">I teach, mentor, and build outreach programs that help learners see themselves as participants in science—not only as an audience for it.</p>
+  </header>
+
+  <section class="section teaching-feature">
+    <div class="container feature-grid">
+      <div>
+        <p class="eyebrow">University teaching</p>
+        <h2>Earth through Time: Fossils & Rocks</h2>
+        <p class="role">Graduate Teaching Assistant · Purdue University · 2026–Present</p>
+      </div>
+      <div class="feature-copy">
+        <p class="lead">Two weekly, three-hour laboratory sections make deep time tangible through fossils, rocks, presentations, and hands-on activities.</p>
+        <ul>
+          <li><span>Teaching load</span><strong>2 sections · 30 students each</strong></li>
+          <li><span>Format</span><strong>3-hour laboratory sections</strong></li>
+          <li><span>Responsibilities</span><strong>Lesson planning, grading, presentations, and office hours</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mentorship">
+    <div class="container section-grid">
+      <div><p class="eyebrow">Mentorship</p><h2>Helping new researchers find their footing</h2></div>
+      <div>
+        <p class="role">Graduate Mentorship Chair · Purdue EAPS Graduate Student Association</p>
+        <p>Supporting 14 first-year graduate students through mentor matching and monthly workshops on academic strategies, advisor relationships, research readiness, wellness, and long-term planning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section outreach">
+    <div class="container">
+      <div class="section-grid heading-grid">
+        <div><p class="eyebrow">STEM outreach</p><h2>Making research approachable</h2></div>
+        <p class="lead">Outreach is a place to practice honest, inviting scientific communication—and to build a wider sense of who belongs in research.</p>
+      </div>
+      <div class="outreach-list">
+        <article>
+          <span>01</span><div><h3>GradSWE Purdue</h3><p class="role">Outreach Chair</p></div><p>Organized the Klondike Elementary STEM Time Capsule, connecting 10 Purdue graduate researchers with five classrooms in grades 3–5.</p>
+        </article>
+        <article>
+          <span>02</span><div><h3>Purdue WISP Science Day</h3><p class="role">EAPS / Physics Graduate Lab Lead</p></div><p>Supported a science-day laboratory experience connecting learners with Earth, atmospheric, planetary, and physics research.</p>
+        </article>
+        <article>
+          <span>03</span><div><h3>Purdue Space Day</h3><p class="role">Stomp Rockets Group Leader</p></div><p>Led a hands-on group activity that used stomp rockets to introduce spaceflight concepts.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section earlier-teaching">
+    <div class="container section-grid">
+      <div><p class="eyebrow">Earlier teaching</p><h2>Academic writing</h2></div>
+      <div><p class="role">Undergraduate Teaching Assistant · ENGL101 · University of Maryland · 2022</p><p>Teaching experience in academic writing complements scientific instruction by sharpening the connection between evidence, structure, and clear communication.</p></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .feature-grid, .section-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.9fr 1.1fr; }
+  h2 { max-width: 14ch; }
+  .role { color: var(--accent); font-size: 0.86rem; font-weight: 750; }
+  .feature-copy ul { margin: 2rem 0 0; padding: 0; list-style: none; }
+  .feature-copy li { display: grid; padding-block: 0.85rem; grid-template-columns: 0.35fr 0.65fr; gap: 1rem; border-top: 1px solid var(--line); }
+  .feature-copy li span { color: var(--ink-soft); font-size: 0.82rem; }
+  .feature-copy li strong { font-size: 0.92rem; }
+  .mentorship { background: var(--accent); color: var(--paper); }
+  .mentorship .eyebrow, .mentorship .role { color: #b9d7e5; }
+  .heading-grid { margin-bottom: var(--space-lg); }
+  .outreach-list article { display: grid; padding-block: var(--space-lg); gap: 1.5rem; grid-template-columns: 3rem 0.7fr 1fr; border-top: 1px solid var(--line); }
+  .outreach-list article > span { color: var(--accent); font-size: 0.75rem; font-weight: 800; }
+  .outreach-list h3 { margin-bottom: 0.5rem; }
+  .earlier-teaching { background: var(--paper-deep); }
+  @media (max-width: 750px) { .feature-grid, .section-grid { grid-template-columns: 1fr; } .outreach-list article { grid-template-columns: 2rem 1fr; } .outreach-list article > p { grid-column: 2; } .feature-copy li { grid-template-columns: 1fr; gap: 0.2rem; } }
+</style>

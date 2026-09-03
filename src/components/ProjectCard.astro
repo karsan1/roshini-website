@@ -1,0 +1,42 @@
+---
+import TagList from './TagList.astro';
+import ScientificGraphic from './ScientificGraphic.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  institution: string;
+  period: string;
+  summary: string;
+  methods: string[];
+  figure: 'paleomag' | 'moma' | 'wetlab' | 'exoplanets';
+  index?: number;
+}
+
+const { id, title, institution, period, summary, methods, figure, index = 1 } = Astro.props;
+---
+
+<article class="project-card">
+  <a class="image-link" href={`/research/${id}/`} aria-label={`Read about ${title}`}>
+    <ScientificGraphic variant={figure} compact />
+  </a>
+  <div class="project-copy">
+    <p class="project-number">0{index}</p>
+    <p class="project-meta">{institution} · {period}</p>
+    <h3><a href={`/research/${id}/`}>{title}</a></h3>
+    <p>{summary}</p>
+    <TagList tags={methods.slice(0, 4)} />
+  </div>
+</article>
+
+<style>
+  .project-card { display: grid; padding-block: var(--space-lg); gap: var(--space-lg); grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr); border-top: 1px solid var(--line); }
+  .image-link { align-self: start; }
+  .project-copy { position: relative; padding-right: 3rem; }
+  .project-number { position: absolute; top: 0; right: 0; color: var(--accent); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; }
+  .project-meta { margin-bottom: 0.7rem; color: var(--ink-soft); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  h3 { margin-bottom: 0.8rem; }
+  h3 a { color: var(--ink); text-decoration: none; }
+  h3 a:hover { color: var(--accent); }
+  @media (max-width: 700px) { .project-card { grid-template-columns: 1fr; } .project-copy { padding-right: 2rem; } }
+</style>

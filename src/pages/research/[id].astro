@@ -1,0 +1,79 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScientificGraphic from '../../components/ScientificGraphic.astro';
+import TagList from '../../components/TagList.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('research');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const allProjects = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const currentIndex = allProjects.findIndex((entry) => entry.id === project.id);
+const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
+---
+
+<BaseLayout title={`${project.data.shortTitle} | Roshini Saravanan`} description={project.data.summary}>
+  <header class="project-intro container">
+    <a class="back-link" href="/research/">← All research</a>
+    <div class="intro-grid">
+      <div>
+        <p class="eyebrow">{project.data.statusLabel}</p>
+        <h1>{project.data.title}</h1>
+      </div>
+      <div class="question-block">
+        <p class="meta-label">Research question</p>
+        <p>{project.data.question}</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="container figure-section">
+    <ScientificGraphic variant={project.data.figure} caption={project.data.figureCaption} />
+  </section>
+
+  <section class="section">
+    <div class="container content-grid">
+      <aside>
+        <dl>
+          <div><dt>Institution</dt><dd>{project.data.institution}</dd></div>
+          <div><dt>Period</dt><dd>{project.data.period}</dd></div>
+          {project.data.collaborators.map((collaborator, index) => <div><dt>{index === 0 ? 'Collaboration' : 'Lab / program'}</dt><dd>{collaborator}</dd></div>)}
+        </dl>
+        <TagList tags={project.data.methods} />
+      </aside>
+      <article class="prose"><Content /></article>
+    </div>
+  </section>
+
+  <nav class="next-project" aria-label="Project navigation">
+    <div class="container">
+      <span>Next project</span>
+      <a href={`/research/${nextProject.id}/`}>{nextProject.data.shortTitle} <b aria-hidden="true">→</b></a>
+    </div>
+  </nav>
+</BaseLayout>
+
+<style>
+  .project-intro { padding-block: 3rem var(--space-lg); }
+  .back-link { display: inline-block; min-height: 44px; margin-bottom: 2rem; font-size: 0.9rem; font-weight: 700; }
+  .intro-grid { display: grid; align-items: end; gap: var(--space-lg); grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.7fr); }
+  h1 { max-width: 14ch; margin-bottom: 0; }
+  .question-block { padding-left: 1.5rem; border-left: 3px solid var(--accent); }
+  .question-block p:last-child { margin: 0; font-family: var(--font-display); font-size: var(--step-1); line-height: 1.4; }
+  .figure-section { padding-bottom: var(--space-xl); }
+  .content-grid { display: grid; align-items: start; gap: var(--space-lg); grid-template-columns: minmax(14rem, 0.32fr) minmax(0, 0.68fr); }
+  aside { position: sticky; top: 100px; }
+  dl { margin: 0 0 1.5rem; }
+  dl div { padding-block: 0.75rem; border-top: 1px solid var(--line); }
+  dt { color: var(--ink-soft); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
+  dd { margin: 0.15rem 0 0; font-size: 0.88rem; }
+  .next-project { padding-block: var(--space-lg); color: var(--paper); background: var(--accent); }
+  .next-project .container { display: grid; gap: 1rem; grid-template-columns: 0.3fr 0.7fr; }
+  .next-project span { color: #b9d7e5; font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .next-project a { color: var(--paper); font-family: var(--font-display); font-size: var(--step-2); text-decoration: none; }
+  @media (max-width: 760px) { .intro-grid, .content-grid { grid-template-columns: 1fr; } aside { position: static; } .next-project .container { grid-template-columns: 1fr; } }
+</style>

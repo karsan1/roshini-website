@@ -1,0 +1,69 @@
+---
+interface Props {
+  variant: 'paleomag' | 'moma' | 'wetlab' | 'exoplanets';
+  caption?: string;
+  compact?: boolean;
+}
+const { variant, caption, compact = false } = Astro.props;
+---
+
+<figure class:list={["scientific-graphic", `variant-${variant}`, { compact }]}>
+  <div class="graphic-frame" aria-hidden="true">
+    {variant === 'paleomag' && (
+      <svg viewBox="0 0 700 430" role="img">
+        <g class="grid"><path d="M70 50v310M70 360h570M70 280h570M70 200h570M70 120h570" /></g>
+        <g class="sample"><circle cx="548" cy="112" r="46"/><path d="M514 82l70 60M524 67l76 64M505 112l54 46"/></g>
+        <path class="data-line" d="M92 94c62 15 78 53 126 70s86 7 129 51 70 65 128 72 101 8 137 32"/>
+        <g class="points"><circle cx="92" cy="94" r="6"/><circle cx="174" cy="139" r="6"/><circle cx="260" cy="174" r="6"/><circle cx="347" cy="215" r="6"/><circle cx="429" cy="271" r="6"/><circle cx="522" cy="292" r="6"/><circle cx="612" cy="319" r="6"/></g>
+        <text x="72" y="395">increasing temperature step</text><text x="83" y="82">remanence</text>
+      </svg>
+    )}
+    {variant === 'moma' && (
+      <svg viewBox="0 0 700 430" role="img">
+        <g class="grid"><path d="M65 52v310M65 362h580M65 285h580M65 208h580M65 131h580" /></g>
+        <g class="spectrum"><path d="M88 362v-56M119 362v-118M152 362v-38M197 362v-224M231 362v-79M278 362v-167M322 362v-52M368 362v-266M412 362v-101M463 362v-180M521 362v-77M567 362v-132M615 362v-43"/></g>
+        <rect class="focus" x="344" y="76" width="51" height="304"/>
+        <text x="65" y="396">mass-to-charge ratio (m/z)</text><text x="78" y="78">relative intensity</text>
+      </svg>
+    )}
+    {variant === 'exoplanets' && (
+      <svg viewBox="0 0 700 430" role="img">
+        <g class="links"><path d="M117 235l94-103 92 94 104-129 111 121 83-65M117 235l151 98 139-236 16 229 95-108 83-65M211 132l57 201 35-107 120 100M303 226l215-8" /></g>
+        <g class="nodes"><circle cx="117" cy="235" r="24"/><circle cx="211" cy="132" r="34"/><circle cx="268" cy="333" r="21"/><circle cx="303" cy="226" r="41"/><circle cx="407" cy="97" r="18"/><circle cx="423" cy="326" r="29"/><circle cx="518" cy="218" r="45"/><circle cx="601" cy="153" r="25"/></g>
+        <text x="65" y="398">parameter-similarity network · conceptual view</text>
+      </svg>
+    )}
+    {variant === 'wetlab' && (
+      <svg viewBox="0 0 700 430" role="img">
+        <g class="vessels"><path d="M113 112v172c0 53 82 53 82 0V112M103 112h102M309 112v172c0 53 82 53 82 0V112M299 112h102M505 112v172c0 53 82 53 82 0V112M495 112h102"/></g>
+        <g class="liquid"><path d="M116 259h76M312 213h76M508 166h76"/></g>
+        <g class="bubbles"><circle cx="148" cy="242" r="6"/><circle cx="340" cy="194" r="8"/><circle cx="365" cy="182" r="5"/><circle cx="537" cy="142" r="8"/><circle cx="561" cy="131" r="5"/><circle cx="548" cy="113" r="4"/></g>
+        <path class="arrow" d="M217 220h67m-14-12 14 12-14 12M413 220h67m-14-12 14 12-14 12"/>
+        <text x="116" y="348">prepare</text><text x="315" y="348">inoculate</text><text x="511" y="348">monitor</text>
+      </svg>
+    )}
+    <span class="figure-index">0{variant === 'paleomag' ? '1' : variant === 'moma' ? '2' : variant === 'exoplanets' ? '3' : '4'}</span>
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .scientific-graphic { margin: 0; }
+  .graphic-frame { position: relative; overflow: hidden; background: var(--accent-pale); border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line)); }
+  svg { width: 100%; height: auto; }
+  path, circle, rect { vector-effect: non-scaling-stroke; }
+  .grid path { fill: none; stroke: color-mix(in srgb, var(--accent) 20%, transparent); stroke-width: 1; }
+  .data-line, .links path, .arrow { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .points circle, .nodes circle { fill: var(--accent); stroke: var(--paper); stroke-width: 2; }
+  .sample circle { fill: var(--paper); stroke: var(--accent); stroke-width: 2; }
+  .sample path { stroke: var(--line); stroke-width: 2; }
+  .spectrum path { fill: none; stroke: var(--accent); stroke-width: 3; }
+  .focus { fill: color-mix(in srgb, var(--accent) 11%, transparent); stroke: var(--accent); stroke-width: 1; stroke-dasharray: 6 5; }
+  .vessels path { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .liquid path { stroke: var(--accent); stroke-width: 6; }
+  .bubbles circle { fill: var(--accent); }
+  text { fill: var(--ink-soft); font-family: var(--font-body); font-size: 14px; letter-spacing: 0.03em; }
+  .figure-index { position: absolute; top: 1rem; right: 1rem; color: var(--accent); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; }
+  figcaption { max-width: 42rem; margin-top: 0.85rem; color: var(--ink-soft); font-size: 0.84rem; line-height: 1.5; }
+  .compact figcaption { display: none; }
+</style>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+---
+
+<BaseLayout title="Publications | Roshini Saravanan" description="Scholarly publications and submitted manuscripts by Roshini Saravanan.">
+  <header class="page-intro container">
+    <p class="eyebrow">Publications</p>
+    <h1>Scholarly work</h1>
+    <p class="lead">A concise record of manuscripts and publications. Status labels are kept explicit so work under review is not presented as published.</p>
+  </header>
+  <section class="section">
+    <div class="container publication-list">
+      <PublicationItem title="Laser Desorption Mass Spectrometry for Mineral Identification" authors="M.C. Raith, R. Saravanan, and R. Arevalo Jr." status="Submitted for review" />
+      <p class="publication-note"><strong>Publication details pending.</strong> Journal, year, DOI, and distributable PDF links will be added only when available and verified.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .publication-list { max-width: 66rem; }
+  .publication-note { max-width: 43rem; margin-top: var(--space-lg); color: var(--ink-soft); }
+</style>

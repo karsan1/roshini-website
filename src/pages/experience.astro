@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+---
+
+<BaseLayout title="Experience & Science Policy | Roshini Saravanan" description="Science policy, mission design, and interdisciplinary experience by Roshini Saravanan.">
+  <header class="page-intro container">
+    <p class="eyebrow">Experience</p>
+    <h1>Science in public decisions</h1>
+    <p class="lead">Research does not stop at the laboratory. My experience in science policy explores how technical evidence, infrastructure, and public priorities meet in real decisions.</p>
+  </header>
+
+  <section class="policy-feature">
+    <div class="container policy-grid">
+      <div class="policy-heading">
+        <p class="eyebrow">Featured · Science policy</p>
+        <h2>Data-center water use and sustainable high-performance computing</h2>
+        <p class="role">Science Policy Intern · Office of Senator Kannan Srinivasan · Senate of Virginia · 2026–Present</p>
+      </div>
+      <div class="policy-scope">
+        <p class="lead">Investigating how cooling choices shape water demand, energy use, and costs in one of the world’s most concentrated data-center regions.</p>
+        <p>The work examines public regulatory data and the technical tradeoffs among air, evaporative, and closed-loop cooling systems in Loudoun County. Topics include water-use effectiveness, cooling-efficiency benchmarking, energy demand, and capital and operating costs.</p>
+        <p class="scope-note"><strong>Public scope:</strong> This overview describes the research problem and methods only. It does not publish internal legislative materials.</p>
+      </div>
+      <div class="policy-diagram" aria-label="Diagram showing water, energy, and cost as connected policy considerations">
+        <svg viewBox="0 0 720 260" aria-hidden="true">
+          <path d="M155 130h160M405 130h160" />
+          <circle cx="105" cy="130" r="70"/><circle cx="360" cy="130" r="70"/><circle cx="615" cy="130" r="70"/>
+          <text x="105" y="137">WATER</text><text x="360" y="137">ENERGY</text><text x="615" y="137">COST</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container experience-grid">
+      <div><p class="eyebrow">Earlier space work</p><h2>Mission design foundations</h2><p class="lead">Early team-based mission programs connected instrumentation, systems thinking, risk, and scientific objectives.</p></div>
+      <ol>
+        <TimelineItem date="2020" title="Europa Mission Design · Risk & Safety" organization="Virginia Space Grant Consortium" />
+        <TimelineItem date="2019" title="Forest-Fire Impact & Recovery Evaluation · Instrument Specialist" organization="Virginia Space Grant Consortium" />
+      </ol>
+    </div>
+  </section>
+
+  <section class="section background">
+    <div class="container experience-grid">
+      <div><p class="eyebrow">Education</p><h2>An interdisciplinary base</h2></div>
+      <dl>
+        <div><dt>2025–Present</dt><dd><strong>M.S. Planetary Science</strong><span>Purdue University</span></dd></div>
+        <div><dt>2021–2024</dt><dd><strong>B.S. Computer & Information Science</strong><span>Minor in Planetary Science · University of Maryland, College Park</span></dd></div>
+      </dl>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .policy-feature { padding-block: var(--space-xl); color: var(--paper); background: var(--accent); }
+  .policy-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.9fr 1.1fr; }
+  .policy-heading h2 { max-width: 14ch; }
+  .eyebrow, .role { color: #b9d7e5; }
+  .role { font-size: 0.84rem; font-weight: 750; }
+  .policy-scope .lead { color: var(--paper); }
+  .scope-note { padding-top: 1.2rem; color: #d0dfe6; border-top: 1px solid color-mix(in srgb, var(--paper) 25%, transparent); font-size: 0.88rem; }
+  .policy-diagram { grid-column: 1 / -1; padding-top: 1rem; }
+  .policy-diagram path, .policy-diagram circle { fill: none; stroke: color-mix(in srgb, var(--paper) 55%, transparent); stroke-width: 1.5; }
+  .policy-diagram text { fill: var(--paper); font-family: var(--font-body); font-size: 15px; font-weight: 750; letter-spacing: 0.12em; text-anchor: middle; }
+  .experience-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.8fr 1.2fr; }
+  .experience-grid h2 { max-width: 12ch; }
+  ol, dl { margin: 0; padding: 0; list-style: none; }
+  .background { background: var(--paper-deep); }
+  .background dl div { display: grid; padding-block: 1rem; gap: 1rem; grid-template-columns: 8rem 1fr; border-top: 1px solid var(--line); }
+  .background dt { color: var(--accent); font-size: 0.84rem; font-weight: 750; }
+  .background dd { margin: 0; }
+  .background strong, .background span { display: block; }
+  .background span { color: var(--ink-soft); }
+  @media (max-width: 750px) { .policy-grid, .experience-grid { grid-template-columns: 1fr; } .background dl div { grid-template-columns: 1fr; gap: 0.25rem; } }
+</style>

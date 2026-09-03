@@ -1,0 +1,63 @@
+---
+const pathname = Astro.url.pathname;
+const links = [
+  { label: 'Research', href: '/research/' },
+  { label: 'Publications', href: '/publications/' },
+  { label: 'Teaching & Outreach', href: '/teaching-outreach/' },
+  { label: 'Experience', href: '/experience/' },
+  { label: 'CV', href: '/cv/' },
+];
+
+const isActive = (href: string) => href === '/' ? pathname === href : pathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="wordmark" href="/" aria-label="Roshini Saravanan, home">
+      <span class="monogram" aria-hidden="true">RS</span>
+      <span>Roshini Saravanan</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {links.map((link) => (
+        <a class:list={{ active: isActive(link.href) }} href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
+      ))}
+    </nav>
+
+    <details class="mobile-nav">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        {links.map((link) => (
+          <a class:list={{ active: isActive(link.href) }} href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
+        ))}
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector('.site-header');
+  const updateHeader = () => header?.classList.toggle('is-compact', window.scrollY > 24);
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+</script>
+
+<style>
+  .site-header { position: sticky; z-index: 100; top: 0; background: color-mix(in srgb, var(--paper) 96%, transparent); border-bottom: 1px solid var(--line); }
+  .header-inner { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 1.5rem; transition: min-height 180ms ease; }
+  .is-compact .header-inner { min-height: 62px; }
+  .wordmark { display: inline-flex; min-height: 44px; align-items: center; gap: 0.75rem; color: var(--ink); font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .monogram { display: grid; width: 2.15rem; height: 2.15rem; place-items: center; color: var(--paper); background: var(--accent); font-family: var(--font-body); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; }
+  .desktop-nav { display: flex; align-items: center; gap: clamp(0.8rem, 2vw, 1.7rem); }
+  .desktop-nav a { position: relative; display: inline-flex; min-height: 44px; align-items: center; color: var(--ink); font-size: 0.875rem; font-weight: 650; text-decoration: none; }
+  .desktop-nav a::after { position: absolute; right: 0; bottom: 0.35rem; left: 0; height: 2px; background: var(--accent); content: ''; transform: scaleX(0); transform-origin: left; transition: transform 180ms ease; }
+  .desktop-nav a:hover::after, .desktop-nav a.active::after { transform: scaleX(1); }
+  .mobile-nav { display: none; }
+  .mobile-nav summary { display: grid; min-width: 60px; min-height: 44px; cursor: pointer; list-style: none; place-items: center; border: 1px solid var(--ink); }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-nav nav { position: absolute; top: 100%; right: 0; left: 0; padding: 1rem; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .mobile-nav nav a { display: flex; min-height: 48px; align-items: center; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .mobile-nav nav a.active { color: var(--accent); font-weight: 750; }
+  @media (max-width: 900px) { .desktop-nav { display: none; } .mobile-nav { display: block; } }
+  @media (max-width: 420px) { .wordmark > span:last-child { display: none; } }
+</style>

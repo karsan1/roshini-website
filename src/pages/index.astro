@@ -1,0 +1,223 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ScientificGraphic from '../components/ScientificGraphic.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PublicationItem from '../components/PublicationItem.astro';
+import TimelineItem from '../components/TimelineItem.astro';
+import TagList from '../components/TagList.astro';
+
+const projects = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const featured = projects.find((project) => project.id === 'ediacaran-paleomagnetism')!;
+---
+
+<BaseLayout
+  title="Roshini Saravanan | Planetary Science & Paleomagnetism"
+  description="Planetary scientist at Purdue University studying paleomagnetism, planetary materials, habitability, and computational approaches to planetary science."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Planetary Science · Paleomagnetism · Astrobiology</p>
+        <h1>Roshini<br />Saravanan</h1>
+        <p class="position-statement">I study how magnetic and mineral records preserve the environmental history of planets—and what those records can tell us about planetary evolution and habitability.</p>
+        <p class="current-role">M.S. Planetary Science · Purdue University</p>
+        <div class="button-row">
+          <a class="button" href="/research/">Explore my research</a>
+          <a class="button button--secondary" href="/cv/">View CV</a>
+        </div>
+        <SocialLinks />
+      </div>
+      <aside class="hero-plate" aria-label="Research areas at a glance">
+        <div class="plate-top">
+          <span>FIELD NOTE · 001</span>
+          <span>570–550 Ma</span>
+        </div>
+        <div class="magnetic-orbit" aria-hidden="true">
+          <svg viewBox="0 0 520 520">
+            <circle cx="260" cy="260" r="65" />
+            <ellipse cx="260" cy="260" rx="112" ry="225" />
+            <ellipse cx="260" cy="260" rx="174" ry="225" />
+            <ellipse cx="260" cy="260" rx="225" ry="150" />
+            <path d="M260 35v450M35 260h450" />
+            <circle class="core" cx="260" cy="260" r="7" />
+          </svg>
+        </div>
+        <dl>
+          <div><dt>Material</dt><dd>Metarhyolite</dd></div>
+          <div><dt>Record</dt><dd>Remanent magnetization</dd></div>
+          <div><dt>Question</dt><dd>Ancient field behavior</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section current-research">
+    <div class="container">
+      <SectionHeading eyebrow="Current research" title="Reading Earth’s ancient magnetic field from Ediacaran rocks" />
+      <div class="feature-grid">
+        <ScientificGraphic variant="paleomag" caption={featured.data.figureCaption} />
+        <div class="feature-copy">
+          <p class="lead">{featured.data.summary}</p>
+          <p>At Purdue’s Paleomagnetism Lab, I combine thermal demagnetization, paleointensity, rock-magnetic measurements, petrography, and geospatial analysis to evaluate the signals preserved by the rocks.</p>
+          <dl class="feature-meta">
+            <div><dt>Institution</dt><dd>Purdue University</dd></div>
+            <div><dt>Lab</dt><dd>Paleomagnetism Lab</dd></div>
+            <div><dt>Advisor</dt><dd>Dr. Cauê Borlina</dd></div>
+            <div><dt>Period</dt><dd>2025–Present</dd></div>
+          </dl>
+          <TagList tags={featured.data.methods} />
+          <a class="rule-link" href={`/research/${featured.id}/`}>Read about the project <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section themes">
+    <div class="container">
+      <SectionHeading eyebrow="Research themes" title="Materials, records, and planetary environments" intro="My work moves between laboratory measurements, computational analysis, and planetary questions. These are connected approaches to understanding how worlds change and whether they can remain habitable." />
+      <div class="three-column theme-grid">
+        <article>
+          <span class="theme-number">01</span>
+          <h3>Planetary<br />Magnetism</h3>
+          <p>Earth’s Ediacaran field, paleointensity, magnetic mineral carriers, and the evaluation of remagnetization.</p>
+          <a href="/research/">Explore the theme →</a>
+        </article>
+        <article>
+          <span class="theme-number">02</span>
+          <h3>Mineralogy, Biosignatures & Habitability</h3>
+          <p>Mineral identification, LDMS spectra, MOMA, and laboratory experience with environmental–biological systems.</p>
+          <a href="/research/">Explore the theme →</a>
+        </article>
+        <article>
+          <span class="theme-number">03</span>
+          <h3>Computational Planetary Science</h3>
+          <p>Machine learning, network analysis, exoplanet populations, geospatial analysis, and scientific visualization.</p>
+          <a href="/research/">Explore the theme →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section selected-work">
+    <div class="container">
+      <SectionHeading eyebrow="Selected work" title="Questions approached across scales" />
+      {projects.map((project, index) => (
+        <ProjectCard
+          id={project.id}
+          title={project.data.shortTitle}
+          institution={project.data.institution}
+          period={project.data.period}
+          summary={project.data.summary}
+          methods={project.data.methods}
+          figure={project.data.figure}
+          index={index + 1}
+        />
+      ))}
+      <article class="policy-row">
+        <p class="project-number">05</p>
+        <div>
+          <p class="project-meta">Senate of Virginia · 2026–Present</p>
+          <h3>Data-center water policy & sustainable scientific computing</h3>
+        </div>
+        <div>
+          <p>Research into water demand, cooling efficiency, and water–energy tradeoffs in Loudoun County.</p>
+          <a class="rule-link" href="/experience/">Explore science policy work →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section publication-section">
+    <div class="container">
+      <SectionHeading eyebrow="Publication" title="Current scholarly output" />
+      <PublicationItem title="Laser Desorption Mass Spectrometry for Mineral Identification" authors="M.C. Raith, R. Saravanan, and R. Arevalo Jr." status="Submitted for review" />
+      <a class="rule-link" href="/publications/">Publication details →</a>
+    </div>
+  </section>
+
+  <section class="section section--ink outreach-preview">
+    <div class="container outreach-grid">
+      <div>
+        <p class="eyebrow">Teaching & outreach</p>
+        <h2>Science works best when it is shared.</h2>
+      </div>
+      <div>
+        <p class="lead">From teaching Earth history labs to mentoring first-year graduate students and bringing researchers into elementary classrooms, I work to make scientific communities more welcoming and connected.</p>
+        <ul>
+          <li><strong>Graduate Teaching Assistant</strong><span>EAPS112 · Earth through Time</span></li>
+          <li><strong>Outreach Chair</strong><span>GradSWE Purdue</span></li>
+          <li><strong>Graduate Mentorship Chair</strong><span>Purdue EAPS GSA</span></li>
+        </ul>
+        <a class="rule-link" href="/teaching-outreach/">Teaching and outreach →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section timeline-section">
+    <div class="container two-column">
+      <div>
+        <p class="eyebrow">Path so far</p>
+        <h2>Research, policy, and public engagement</h2>
+        <p class="lead">A selected timeline—not a substitute for the full CV.</p>
+      </div>
+      <ol class="timeline">
+        <TimelineItem date="2026–Present" title="Science Policy Intern" organization="Senate of Virginia" />
+        <TimelineItem date="2025–Present" title="Graduate Research Assistant" organization="Purdue Paleomagnetism Lab" />
+        <TimelineItem date="2024–2026" title="Undergraduate Researcher" organization="University of Maryland · M-Class Lab" />
+        <TimelineItem date="2023" title="Planetary Informatics & Biosignature Fellow" organization="Carnegie Institution for Science" />
+        <TimelineItem date="2020" title="Europa Mission Design" organization="Virginia Space Grant Consortium" />
+        <TimelineItem date="2019" title="Instrument Specialist" organization="Virginia Space Grant Consortium" />
+      </ol>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { padding-block: clamp(3.5rem, 8vw, 8rem); }
+  .hero-grid { display: grid; min-height: 70vh; align-items: center; gap: var(--space-lg); grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr); }
+  .hero-copy h1 { margin-bottom: 1.5rem; }
+  .position-statement { max-width: 39rem; font-family: var(--font-display); font-size: var(--step-1); line-height: 1.48; }
+  .current-role { color: var(--ink-soft); font-size: 0.93rem; font-weight: 700; }
+  .hero-copy .button-row { margin-block: 2rem 1rem; }
+  .hero-plate { align-self: stretch; display: flex; min-height: 34rem; padding: 1.1rem; flex-direction: column; background: var(--accent); color: var(--paper); }
+  .plate-top { display: flex; justify-content: space-between; color: #b9d7e5; font-size: 0.72rem; font-weight: 750; letter-spacing: 0.1em; }
+  .magnetic-orbit { display: grid; flex: 1; place-items: center; }
+  .magnetic-orbit svg { width: min(100%, 27rem); }
+  .magnetic-orbit circle, .magnetic-orbit ellipse, .magnetic-orbit path { fill: none; stroke: color-mix(in srgb, var(--paper) 58%, transparent); stroke-width: 1; }
+  .magnetic-orbit .core { fill: var(--paper); stroke: none; }
+  .hero-plate dl { display: grid; margin: 0; gap: 1px; grid-template-columns: repeat(3, 1fr); background: color-mix(in srgb, var(--paper) 22%, transparent); }
+  .hero-plate dl div { padding: 0.75rem; background: var(--accent); }
+  .hero-plate dt { color: #b9d7e5; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; }
+  .hero-plate dd { margin: 0.25rem 0 0; font-size: 0.78rem; line-height: 1.35; }
+  .feature-grid { display: grid; align-items: start; gap: var(--space-lg); grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr); }
+  .feature-meta { display: grid; margin-block: 2rem; grid-template-columns: 1fr 1fr; }
+  .feature-meta div { padding: 0.65rem 0; border-top: 1px solid var(--line); }
+  .feature-meta dt { color: var(--ink-soft); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; }
+  .feature-meta dd { margin: 0.1rem 0 0; font-size: 0.9rem; font-weight: 650; }
+  .feature-copy :global(.tag-block) { margin-bottom: 1.5rem; }
+  .theme-grid article { min-height: 25rem; padding: clamp(1.5rem, 3vw, 3rem); }
+  .theme-number { color: var(--accent); font-size: 0.74rem; font-weight: 800; }
+  .theme-grid h3 { margin-block: 3rem 1.2rem; min-height: 3.8em; }
+  .theme-grid p { color: var(--ink-soft); }
+  .theme-grid a { display: inline-block; margin-top: 1rem; font-weight: 700; }
+  .policy-row { display: grid; padding-block: var(--space-lg); gap: 1rem var(--space-lg); grid-template-columns: 4rem minmax(0, 0.9fr) minmax(0, 0.8fr); border-top: 1px solid var(--line); }
+  .project-number, .project-meta { color: var(--accent); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+  .publication-section :global(.rule-link) { margin-top: 1.5rem; }
+  .outreach-grid { display: grid; gap: var(--space-lg); grid-template-columns: 1fr 1fr; }
+  .outreach-grid h2 { max-width: 12ch; }
+  .outreach-grid ul { margin-block: 2rem; padding: 0; list-style: none; }
+  .outreach-grid li { display: grid; padding-block: 0.75rem; grid-template-columns: 1fr 1fr; gap: 1rem; border-top: 1px solid #3b3e40; }
+  .outreach-grid li span { color: #aaa69f; }
+  .timeline { margin: 0; padding: 0; list-style: none; }
+  @media (max-width: 800px) {
+    .hero-grid, .feature-grid, .outreach-grid { grid-template-columns: 1fr; }
+    .hero-grid { min-height: auto; }
+    .hero-plate { min-height: 28rem; }
+    .policy-row { grid-template-columns: 2rem 1fr; }
+    .policy-row > :last-child { grid-column: 2; }
+  }
+  @media (max-width: 480px) { .hero-plate dl { grid-template-columns: 1fr; } }
+</style>

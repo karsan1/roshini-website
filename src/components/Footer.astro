@@ -1,0 +1,31 @@
+---
+import SocialLinks from './SocialLinks.astro';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="eyebrow">Connect</p>
+      <h2>Questions worth pursuing often cross disciplines.</h2>
+    </div>
+    <div class="footer-contact">
+      <p>Interested in planetary science, paleomagnetism, habitability, or science policy? I’d be happy to connect.</p>
+      <SocialLinks />
+    </div>
+  </div>
+  <div class="container footer-base">
+    <span>© {new Date().getFullYear()} Roshini Saravanan</span>
+    <span>Planetary science · Purdue University</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer { padding-top: var(--space-xl); color: var(--paper); background: var(--ink); }
+  .footer-grid { display: grid; gap: var(--space-lg); grid-template-columns: 1.25fr 0.75fr; }
+  h2 { max-width: 13ch; margin: 0; font-size: var(--step-3); }
+  .footer-contact { max-width: 28rem; align-self: end; }
+  .footer-contact p { color: #d9d5cc; }
+  .footer-contact :global(a) { color: #b9d7e5; }
+  .footer-base { display: flex; margin-top: var(--space-xl); padding-block: 1.5rem; justify-content: space-between; gap: 1rem; color: #aaa69f; font-size: 0.8rem; border-top: 1px solid #3b3e40; }
+  @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } .footer-base { flex-direction: column; } }
+</style>

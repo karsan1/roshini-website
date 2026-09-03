@@ -1,0 +1,18 @@
+---
+interface Props { tags: string[]; label?: string; }
+const { tags, label = 'Methods' } = Astro.props;
+---
+
+<div class="tag-block">
+  <p class="tag-label">{label}</p>
+  <ul aria-label={label}>
+    {tags.map((tag) => <li>{tag}</li>)}
+  </ul>
+</div>
+
+<style>
+  .tag-label { margin-bottom: 0.5rem; color: var(--ink-soft); font-size: 0.78rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
+  ul { display: flex; margin: 0; padding: 0; flex-wrap: wrap; gap: 0.35rem 0.9rem; list-style: none; }
+  li { position: relative; color: var(--ink-soft); font-size: 0.86rem; }
+  li:not(:last-child)::after { position: absolute; right: -0.55rem; content: '·'; }
+</style>
