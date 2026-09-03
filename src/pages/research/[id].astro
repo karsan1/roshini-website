@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ScientificGraphic from '../../components/ScientificGraphic.astro';
 import TagList from '../../components/TagList.astro';
+import { withBase } from '../../lib/paths';
 
 export async function getStaticPaths() {
   const projects = await getCollection('research');
@@ -18,7 +19,7 @@ const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
 
 <BaseLayout title={`${project.data.shortTitle} | Roshini Saravanan`} description={project.data.summary}>
   <header class="project-intro container">
-    <a class="back-link" href="/research/">← All research</a>
+    <a class="back-link" href={withBase('research/')}>← All research</a>
     <div class="intro-grid">
       <div>
         <p class="eyebrow">{project.data.statusLabel}</p>
@@ -52,7 +53,7 @@ const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
   <nav class="next-project" aria-label="Project navigation">
     <div class="container">
       <span>Next project</span>
-      <a href={`/research/${nextProject.id}/`}>{nextProject.data.shortTitle} <b aria-hidden="true">→</b></a>
+      <a href={withBase(`research/${nextProject.id}/`)}>{nextProject.data.shortTitle} <b aria-hidden="true">→</b></a>
     </div>
   </nav>
 </BaseLayout>

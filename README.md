@@ -17,7 +17,7 @@ Research projects live in `src/content/research/` and are validated by `src/cont
 
 ## Deployment
 
-The site is configured for `https://roshinisaravanan.github.io` and deploys from `main` through the GitHub Pages workflow in `.github/workflows/deploy.yml`.
+The site is configured for `https://karsan1.github.io/roshini-website/` and deploys from `main` through the GitHub Pages workflow in `.github/workflows/deploy.yml`.
 
 In the repository's GitHub Pages settings, choose **GitHub Actions** as the source.
 

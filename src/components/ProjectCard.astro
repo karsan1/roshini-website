@@ -1,6 +1,7 @@
 ---
 import TagList from './TagList.astro';
 import ScientificGraphic from './ScientificGraphic.astro';
+import { withBase } from '../lib/paths';
 
 interface Props {
   id: string;
@@ -17,13 +18,13 @@ const { id, title, institution, period, summary, methods, figure, index = 1 } = 
 ---
 
 <article class="project-card">
-  <a class="image-link" href={`/research/${id}/`} aria-label={`Read about ${title}`}>
+  <a class="image-link" href={withBase(`research/${id}/`)} aria-label={`Read about ${title}`}>
     <ScientificGraphic variant={figure} compact />
   </a>
   <div class="project-copy">
     <p class="project-number">0{index}</p>
     <p class="project-meta">{institution} · {period}</p>
-    <h3><a href={`/research/${id}/`}>{title}</a></h3>
+    <h3><a href={withBase(`research/${id}/`)}>{title}</a></h3>
     <p>{summary}</p>
     <TagList tags={methods.slice(0, 4)} />
   </div>

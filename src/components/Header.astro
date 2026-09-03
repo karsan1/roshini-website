@@ -1,19 +1,21 @@
 ---
+import { withBase } from '../lib/paths';
+
 const pathname = Astro.url.pathname;
 const links = [
-  { label: 'Research', href: '/research/' },
-  { label: 'Publications', href: '/publications/' },
-  { label: 'Teaching & Outreach', href: '/teaching-outreach/' },
-  { label: 'Experience', href: '/experience/' },
-  { label: 'CV', href: '/cv/' },
+  { label: 'Research', href: withBase('research/') },
+  { label: 'Publications', href: withBase('publications/') },
+  { label: 'Teaching & Outreach', href: withBase('teaching-outreach/') },
+  { label: 'Experience', href: withBase('experience/') },
+  { label: 'CV', href: withBase('cv/') },
 ];
 
-const isActive = (href: string) => href === '/' ? pathname === href : pathname.startsWith(href);
+const isActive = (href: string) => href === withBase() ? pathname === href : pathname.startsWith(href);
 ---
 
 <header class="site-header">
   <div class="header-inner container">
-    <a class="wordmark" href="/" aria-label="Roshini Saravanan, home">
+    <a class="wordmark" href={withBase()} aria-label="Roshini Saravanan, home">
       <span class="monogram" aria-hidden="true">RS</span>
       <span>Roshini Saravanan</span>
     </a>

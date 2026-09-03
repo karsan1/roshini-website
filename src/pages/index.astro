@@ -8,6 +8,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import TimelineItem from '../components/TimelineItem.astro';
 import TagList from '../components/TagList.astro';
+import { withBase } from '../lib/paths';
 
 const projects = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
 const featured = projects.find((project) => project.id === 'ediacaran-paleomagnetism')!;
@@ -25,8 +26,8 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
         <p class="position-statement">I study how magnetic and mineral records preserve the environmental history of planets—and what those records can tell us about planetary evolution and habitability.</p>
         <p class="current-role">M.S. Planetary Science · Purdue University</p>
         <div class="button-row">
-          <a class="button" href="/research/">Explore my research</a>
-          <a class="button button--secondary" href="/cv/">View CV</a>
+          <a class="button" href={withBase('research/')}>Explore my research</a>
+          <a class="button button--secondary" href={withBase('cv/')}>View CV</a>
         </div>
         <SocialLinks />
       </div>
@@ -69,7 +70,7 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
             <div><dt>Period</dt><dd>2025–Present</dd></div>
           </dl>
           <TagList tags={featured.data.methods} />
-          <a class="rule-link" href={`/research/${featured.id}/`}>Read about the project <span aria-hidden="true">→</span></a>
+          <a class="rule-link" href={withBase(`research/${featured.id}/`)}>Read about the project <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -83,19 +84,19 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
           <span class="theme-number">01</span>
           <h3>Planetary<br />Magnetism</h3>
           <p>Earth’s Ediacaran field, paleointensity, magnetic mineral carriers, and the evaluation of remagnetization.</p>
-          <a href="/research/">Explore the theme →</a>
+          <a href={withBase('research/')}>Explore the theme →</a>
         </article>
         <article>
           <span class="theme-number">02</span>
           <h3>Mineralogy, Biosignatures & Habitability</h3>
           <p>Mineral identification, LDMS spectra, MOMA, and laboratory experience with environmental–biological systems.</p>
-          <a href="/research/">Explore the theme →</a>
+          <a href={withBase('research/')}>Explore the theme →</a>
         </article>
         <article>
           <span class="theme-number">03</span>
           <h3>Computational Planetary Science</h3>
           <p>Machine learning, network analysis, exoplanet populations, geospatial analysis, and scientific visualization.</p>
-          <a href="/research/">Explore the theme →</a>
+          <a href={withBase('research/')}>Explore the theme →</a>
         </article>
       </div>
     </div>
@@ -124,7 +125,7 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
         </div>
         <div>
           <p>Research into water demand, cooling efficiency, and water–energy tradeoffs in Loudoun County.</p>
-          <a class="rule-link" href="/experience/">Explore science policy work →</a>
+          <a class="rule-link" href={withBase('experience/')}>Explore science policy work →</a>
         </div>
       </article>
     </div>
@@ -134,7 +135,7 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
     <div class="container">
       <SectionHeading eyebrow="Publication" title="Current scholarly output" />
       <PublicationItem title="Laser Desorption Mass Spectrometry for Mineral Identification" authors="M.C. Raith, R. Saravanan, and R. Arevalo Jr." status="Submitted for review" />
-      <a class="rule-link" href="/publications/">Publication details →</a>
+      <a class="rule-link" href={withBase('publications/')}>Publication details →</a>
     </div>
   </section>
 
@@ -151,7 +152,7 @@ const featured = projects.find((project) => project.id === 'ediacaran-paleomagne
           <li><strong>Outreach Chair</strong><span>GradSWE Purdue</span></li>
           <li><strong>Graduate Mentorship Chair</strong><span>Purdue EAPS GSA</span></li>
         </ul>
-        <a class="rule-link" href="/teaching-outreach/">Teaching and outreach →</a>
+        <a class="rule-link" href={withBase('teaching-outreach/')}>Teaching and outreach →</a>
       </div>
     </div>
   </section>
