@@ -178,6 +178,16 @@ li {
   line-height: 1.7;
 }
 
+.placeholder {
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.section--ink .placeholder,
+.policy-feature .placeholder {
+  color: #d9d5cc;
+}
+
 .two-column {
   display: grid;
   gap: var(--space-lg);

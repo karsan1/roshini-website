@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <header class="page-intro container">
     <p class="eyebrow">Teaching, mentorship & engagement</p>
     <h1>Teaching & Outreach</h1>
-    <p class="lead">I teach, mentor, and organize outreach that helps learners participate in science with confidence.</p>
+    <p class="lead placeholder">[Add your own introduction to your teaching, mentorship, and outreach.]</p>
   </header>
 
   <section class="section teaching-feature">
@@ -17,22 +17,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p class="role">Graduate Teaching Assistant · Purdue University · 2026–Present</p>
       </div>
       <div class="feature-copy">
-        <p class="lead">Two weekly, three-hour laboratory sections make deep time tangible through fossils, rocks, presentations, and hands-on activities.</p>
-        <ul>
-          <li><span>Teaching load</span><strong>2 sections · 30 students each</strong></li>
-          <li><span>Format</span><strong>3-hour laboratory sections</strong></li>
-          <li><span>Responsibilities</span><strong>Lesson planning, grading, presentations, and office hours</strong></li>
-        </ul>
+        <p class="lead placeholder">[Add your description of this Graduate Teaching Assistant position.]</p>
       </div>
     </div>
   </section>
 
   <section class="section mentorship">
     <div class="container section-grid">
-      <div><p class="eyebrow">Mentorship</p><h2>Helping new researchers find their footing</h2></div>
+      <div><p class="eyebrow">Mentorship</p><h2>Graduate Mentorship Chair</h2></div>
       <div>
-        <p class="role">Graduate Mentorship Chair · Purdue EAPS Graduate Student Association</p>
-        <p>Supporting 14 first-year graduate students through mentor matching and monthly workshops on academic strategies, advisor relationships, research readiness, wellness, and long-term planning.</p>
+        <p class="role">Purdue EAPS Graduate Student Association</p>
+        <p class="placeholder">[Add your description of this Graduate Mentorship Chair position.]</p>
       </div>
     </div>
   </section>
@@ -41,17 +36,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="section-grid heading-grid">
         <div><p class="eyebrow">STEM outreach</p><h2>Making research approachable</h2></div>
-        <p class="lead">Outreach is a place to practice honest, inviting scientific communication—and to build a wider sense of who belongs in research.</p>
+        <p class="lead placeholder">[Add your own introduction to your STEM outreach work.]</p>
       </div>
       <div class="outreach-list">
         <article>
-          <span>01</span><div><h3>GradSWE Purdue</h3><p class="role">Outreach Chair</p></div><p>Organized the Klondike Elementary STEM Time Capsule, connecting 10 Purdue graduate researchers with five classrooms in grades 3–5.</p>
+          <span>01</span><div><h3>Outreach Chair</h3><p class="role">GradSWE Purdue</p></div><p class="placeholder">[Add your description of this Outreach Chair position.]</p>
         </article>
         <article>
-          <span>02</span><div><h3>Purdue WISP Science Day</h3><p class="role">EAPS / Physics Graduate Lab Lead</p></div><p>Supported a science-day laboratory experience connecting learners with Earth, atmospheric, planetary, and physics research.</p>
+          <span>02</span><div><h3>EAPS / Physics Graduate Lab Lead</h3><p class="role">Purdue WISP Science Day</p></div><p class="placeholder">[Add your description of this Graduate Lab Lead position.]</p>
         </article>
         <article>
-          <span>03</span><div><h3>Purdue Space Day</h3><p class="role">Stomp Rockets Group Leader</p></div><p>Led a hands-on group activity that used stomp rockets to introduce spaceflight concepts.</p>
+          <span>03</span><div><h3>Stomp Rockets Group Leader</h3><p class="role">Purdue Space Day</p></div><p class="placeholder">[Add your description of this Group Leader position.]</p>
         </article>
       </div>
     </div>
@@ -59,8 +54,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <section class="section earlier-teaching">
     <div class="container section-grid">
-      <div><p class="eyebrow">Earlier teaching</p><h2>Academic writing</h2></div>
-      <div><p class="role">Undergraduate Teaching Assistant · ENGL101 · University of Maryland · 2022</p><p>Teaching experience in academic writing complements scientific instruction by sharpening the connection between evidence, structure, and clear communication.</p></div>
+      <div><p class="eyebrow">Earlier teaching</p><h2>Undergraduate Teaching Assistant</h2></div>
+      <div><p class="role">ENGL101 · University of Maryland · 2022</p><p class="placeholder">[Add your description of this Undergraduate Teaching Assistant position.]</p></div>
     </div>
   </section>
 </BaseLayout>
@@ -69,10 +64,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .feature-grid, .section-grid { display: grid; gap: var(--space-lg); grid-template-columns: 0.9fr 1.1fr; }
   h2 { max-width: 14ch; }
   .role { color: var(--accent); font-size: 0.86rem; font-weight: 750; }
-  .feature-copy ul { margin: 2rem 0 0; padding: 0; list-style: none; }
-  .feature-copy li { display: grid; padding-block: 0.85rem; grid-template-columns: 0.35fr 0.65fr; gap: 1rem; border-top: 1px solid var(--line); }
-  .feature-copy li span { color: var(--ink-soft); font-size: 0.82rem; }
-  .feature-copy li strong { font-size: 0.92rem; }
   .mentorship { background: var(--accent); color: var(--paper); }
   .mentorship .eyebrow, .mentorship .role { color: #b9d7e5; }
   .heading-grid { margin-bottom: var(--space-lg); }
@@ -80,5 +71,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .outreach-list article > span { color: var(--accent); font-size: 0.75rem; font-weight: 800; }
   .outreach-list h3 { margin-bottom: 0.5rem; }
   .earlier-teaching { background: var(--paper-deep); }
-  @media (max-width: 750px) { .feature-grid, .section-grid { grid-template-columns: 1fr; } .outreach-list article { grid-template-columns: 2rem 1fr; } .outreach-list article > p { grid-column: 2; } .feature-copy li { grid-template-columns: 1fr; gap: 0.2rem; } }
+  @media (max-width: 750px) { .feature-grid, .section-grid { grid-template-columns: 1fr; } .outreach-list article { grid-template-columns: 2rem 1fr; } .outreach-list article > p { grid-column: 2; } }
 </style>
