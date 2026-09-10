@@ -2,6 +2,12 @@
 
 An editorial scientific portfolio built with Astro and TypeScript. The site covers planetary science, paleomagnetism, astrobiology, computational research, science policy, teaching, and outreach.
 
+## Project guides
+
+- [Editing website and CV content](README_CONTENT_EDITING.md)
+- [GitHub ownership, collaborators, and Pages setup](README_GITHUB_PAGES_HANDOFF.md)
+- [Technical overview and project structure](README_TECHNICAL_OVERVIEW.md)
+
 ## Local development
 
 ```sh
