@@ -1,4 +1,4 @@
-# Roshini Saravanan — Academic Website
+# Roshini Saravanan: My Portfolio
 
 An editorial scientific portfolio built with Astro and TypeScript. The site covers planetary science, paleomagnetism, astrobiology, computational research, science policy, teaching, and outreach.
 
