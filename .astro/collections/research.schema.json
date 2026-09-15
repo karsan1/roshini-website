@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "shortTitle": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "featured": {
+      "default": false,
+      "type": "boolean"
+    },
+    "order": {
+      "type": "number"
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "collaborators": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "figure": {
+      "type": "string",
+      "enum": [
+        "paleomag",
+        "moma",
+        "wetlab",
+        "exoplanets"
+      ]
+    },
+    "figureCaption": {
+      "type": "string"
+    },
+    "statusLabel": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "shortTitle",
+    "institution",
+    "period",
+    "question",
+    "summary",
+    "order",
+    "methods",
+    "figure",
+    "figureCaption"
+  ]
+}

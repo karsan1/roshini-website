@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karsan1.github.io/roshini-website/sitemap-index.xml
